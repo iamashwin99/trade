@@ -1,1 +1,1 @@
-from .finvasia import *
+from finvasia import *
