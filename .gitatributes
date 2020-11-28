@@ -1,0 +1,4 @@
+lines (2 sloc)  66 Bytes
+ 
+# Auto detect text files and perform LF normalization
+* text=auto
