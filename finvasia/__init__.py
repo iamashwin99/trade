@@ -1,1 +1,0 @@
-from finvasia import *
