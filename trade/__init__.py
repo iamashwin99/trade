@@ -1,1 +1,1 @@
-from .finvasia import *
+from .trade import *
