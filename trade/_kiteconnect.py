@@ -44,20 +44,6 @@ def login():
     driver.find_element(By.ID, "pin").send_keys(Keys.ENTER)
     driver.find_element(By.CSS_SELECTOR, ".button-orange").click()
 
-login()
-time.sleep(3)
-try:    
-    cookie="__cfduid="+driver.get_cookies()[4]['value']+"; kf_session="+driver.get_cookies()[3]['value']+"; public_token="+driver.get_cookies()[2]['value']+"; user_id=YF6709"+"; enctoken="+driver.get_cookies()[1]['value']
-except:
-    print("error")
-
-enctoken="enctoken "+driver.get_cookies()[1]['value']
-pubtoken=driver.get_cookies()[2]['value']
-
-head={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,
-      "Connection":"keep-alive","Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest": "empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
-      "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"}
-
 def orderbook(S=S):
     referer="https://kite.zerodha.com/dashboard"
     method="get"
@@ -120,3 +106,16 @@ def getdata(token,frdate,todate):
     url='https://kite.zerodha.com/oms/instruments/historical/'+token+"/minute?user_id=YF6709&oi=1&from="+frdate+'&to='+todate+"&&ciqrandom="+timestamp()
     print(url)
     return S.get(url,headers=headers1).json()    
+login()
+time.sleep(3)
+try:    
+    cookie="__cfduid="+driver.get_cookies()[4]['value']+"; kf_session="+driver.get_cookies()[3]['value']+"; public_token="+driver.get_cookies()[2]['value']+"; user_id=YF6709"+"; enctoken="+driver.get_cookies()[1]['value']
+except:
+    print("error")
+
+enctoken="enctoken "+driver.get_cookies()[1]['value']
+pubtoken=driver.get_cookies()[2]['value']
+
+head={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,
+      "Connection":"keep-alive","Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest": "empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
+      "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"}
