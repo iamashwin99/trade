@@ -24,10 +24,13 @@ symbols=['IBULHSGFIN','AUROPHARMA','ADANIGREEN','CUMMINSIND','INDHOTEL','CHOLAFI
 'DLF','ABBOTINDIA','FEDERALBNK','AJANTPHARM','JINDALSTEL','CESC','MARICO','HDFC','POLYCAB','NTPC','UPL','PFIZER','CUB','VOLTAS','JSWSTEEL','AXISBANK','RECLTD','ONGC','PGHH','TATAPOWER','WHIRLPOOL','VBL','MCDOWELL-N','IGL','INDUSINDBK',
 'SBIN','ICICIBANK','COALINDIA','YESBANK','SBICARD','CANBK','BANKBARODA','BOSCHLTD','KOTAKBANK','LICHSGFIN','APOLLOHOSP','SRTRANSFIN']
 
-referer="https://kite.zerodha.com/static/build/chart.html?v=2.6.1"
+options = webdriver.ChromeOptions()
+options.add_argument('-headless')
+options.add_argument('-no-sandbox')
+options.add_argument('-disable-dev-shm-usage')eferer="https://kite.zerodha.com/static/build/chart.html?v=2.6.1"
 method="get"
 path=""
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=options)
 driver.maximize_window()
   
 def login():
