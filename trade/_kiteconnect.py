@@ -27,7 +27,8 @@ symbols=['IBULHSGFIN','AUROPHARMA','ADANIGREEN','CUMMINSIND','INDHOTEL','CHOLAFI
 options = webdriver.ChromeOptions()
 options.add_argument('-headless')
 options.add_argument('-no-sandbox')
-options.add_argument('-disable-dev-shm-usage')eferer="https://kite.zerodha.com/static/build/chart.html?v=2.6.1"
+options.add_argument('-disable-dev-shm-usage')
+referer="https://kite.zerodha.com/static/build/chart.html?v=2.6.1"
 method="get"
 path=""
 driver = webdriver.Chrome(options=options)
