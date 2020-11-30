@@ -3,24 +3,26 @@ import json
 import datetime as dt
 import requests
 
-S=requests.session()
+class kite:
+    def __init__(self):       
+        self.session=requests.session()
 #ent=0
 #    for token in mkt['data']:
 #	tokens.update[{t['data'][ent]['tradingsymbol']:t['data'][ent]['instrument_token']}]
 #	ent=ent+1
-symbols=['IBULHSGFIN','AUROPHARMA','ADANIGREEN','CUMMINSIND','INDHOTEL','CHOLAFIN','FORTIS','COROMANDEL','M&MFIN','CADILAHC','NAUKRI','AARTIIND','SHREECEM','TORNTPHARM','ADANITRANS','BALKRISIND','GRASIM','ADANIGAS','HINDZINC',
-'PAGEIND','BATAINDIA','SRF','SUNPHARMA','BIOCON','ABCAPITAL','ASHOKLEY','JUBLFOOD','SIEMENS','ITC','BAJAJHLDNG','INFRATEL','COFORGE','EDELWEISS','ADANIENT','BHEL','APOLLOTYRE','MANAPPURAM','EMAMILTD','GLENMARK','L&TFH','OIL',
-'RAMCOCEM','NAM-INDIA','VGUARD','PETRONET','GSPL','LTTS','TATACHEM','EICHERMOT','HDFCLIFE','IPCALAB','DALBHARAT','HINDUNILVR','JSWENERGY','MGL','ZEEL','DABUR','HINDALCO','SAIL','CIPLA','TATAMOTORS','GICRE','ESCORTS','NMDC','MRF',
-'UBL','PEL','NAVINFLUOR','TECHM','SYNGENE','CROMPTON','DIVISLAB','LUPIN','MOTHERSUMI','GAIL','BAJAJFINSV','IDEA','HEROMOTOCO','TITAN','LT','EXIDEIND','PRESTIGE','APLLTD','INDIGO','TATACONSUM','MINDTREE','SANOFI','HUDCO','ENDURANCE',
-'IRCTC','OFSS','TVSMOTOR','GMRINFRA','SUNTV','BAJFINANCE','BRITANNIA','MUTHOOTFIN','PNB','M&M','ISEC','BHARTIARTL','AMBUJACEM','COLPAL','BAJAJ-AUTO','LTI','AMARAJABAT','GODREJAGRO','FRETAIL','CASTROLIND','HDFCAMC','RBLBANK','NATCOPHARM',
-'ACC','NESTLEIND','ICICIPRULI','PIDILITIND','ULTRACEMCO','GODREJPROP','HINDPETRO','RELIANCE','ALKEM','CONCOR','IDFCFIRSTB','IOC','BERGEPAINT','UNIONBANK','BEL','LALPATHLAB','WIPRO','BANDHANBNK','HCLTECH','GODREJIND','HAVELLS','AUBANK',
-'SBILIFE','BHARATFORG','MFSL','BPCL','TORNTPOWER','ABFRL','DRREDDY','POWERGRID','MARUTI','PIIND','INFY','NATIONALUM','HDFCBANK','ASIANPAINT','ADANIPORTS','DMART','ICICIGI','GODREJCP','PFC','TATASTEEL','GUJGASLTD','BANKINDIA','TCS',
-'DLF','ABBOTINDIA','FEDERALBNK','AJANTPHARM','JINDALSTEL','CESC','MARICO','HDFC','POLYCAB','NTPC','UPL','PFIZER','CUB','VOLTAS','JSWSTEEL','AXISBANK','RECLTD','ONGC','PGHH','TATAPOWER','WHIRLPOOL','VBL','MCDOWELL-N','IGL','INDUSINDBK',
-'SBIN','ICICIBANK','COALINDIA','YESBANK','SBICARD','CANBK','BANKBARODA','BOSCHLTD','KOTAKBANK','LICHSGFIN','APOLLOHOSP','SRTRANSFIN']
+        symbols=['IBULHSGFIN','AUROPHARMA','ADANIGREEN','CUMMINSIND','INDHOTEL','CHOLAFIN','FORTIS','COROMANDEL','M&MFIN','CADILAHC','NAUKRI','AARTIIND','SHREECEM','TORNTPHARM','ADANITRANS','BALKRISIND','GRASIM','ADANIGAS','HINDZINC',
+         'PAGEIND','BATAINDIA','SRF','SUNPHARMA','BIOCON','ABCAPITAL','ASHOKLEY','JUBLFOOD','SIEMENS','ITC','BAJAJHLDNG','INFRATEL','COFORGE','EDELWEISS','ADANIENT','BHEL','APOLLOTYRE','MANAPPURAM','EMAMILTD','GLENMARK','L&TFH','OIL',
+         'RAMCOCEM','NAM-INDIA','VGUARD','PETRONET','GSPL','LTTS','TATACHEM','EICHERMOT','HDFCLIFE','IPCALAB','DALBHARAT','HINDUNILVR','JSWENERGY','MGL','ZEEL','DABUR','HINDALCO','SAIL','CIPLA','TATAMOTORS','GICRE','ESCORTS','NMDC','MRF',
+         'UBL','PEL','NAVINFLUOR','TECHM','SYNGENE','CROMPTON','DIVISLAB','LUPIN','MOTHERSUMI','GAIL','BAJAJFINSV','IDEA','HEROMOTOCO','TITAN','LT','EXIDEIND','PRESTIGE','APLLTD','INDIGO','TATACONSUM','MINDTREE','SANOFI','HUDCO','ENDURANCE',
+         'IRCTC','OFSS','TVSMOTOR','GMRINFRA','SUNTV','BAJFINANCE','BRITANNIA','MUTHOOTFIN','PNB','M&M','ISEC','BHARTIARTL','AMBUJACEM','COLPAL','BAJAJ-AUTO','LTI','AMARAJABAT','GODREJAGRO','FRETAIL','CASTROLIND','HDFCAMC','RBLBANK','NATCOPHARM',
+         'ACC','NESTLEIND','ICICIPRULI','PIDILITIND','ULTRACEMCO','GODREJPROP','HINDPETRO','RELIANCE','ALKEM','CONCOR','IDFCFIRSTB','IOC','BERGEPAINT','UNIONBANK','BEL','LALPATHLAB','WIPRO','BANDHANBNK','HCLTECH','GODREJIND','HAVELLS','AUBANK',
+         'SBILIFE','BHARATFORG','MFSL','BPCL','TORNTPOWER','ABFRL','DRREDDY','POWERGRID','MARUTI','PIIND','INFY','NATIONALUM','HDFCBANK','ASIANPAINT','ADANIPORTS','DMART','ICICIGI','GODREJCP','PFC','TATASTEEL','GUJGASLTD','BANKINDIA','TCS',
+         'DLF','ABBOTINDIA','FEDERALBNK','AJANTPHARM','JINDALSTEL','CESC','MARICO','HDFC','POLYCAB','NTPC','UPL','PFIZER','CUB','VOLTAS','JSWSTEEL','AXISBANK','RECLTD','ONGC','PGHH','TATAPOWER','WHIRLPOOL','VBL','MCDOWELL-N','IGL','INDUSINDBK',
+         'SBIN','ICICIBANK','COALINDIA','YESBANK','SBICARD','CANBK','BANKBARODA','BOSCHLTD','KOTAKBANK','LICHSGFIN','APOLLOHOSP','SRTRANSFIN']
 
-referer="https://kite.zerodha.com/static/build/chart.html?v=2.6.1"
-method="get"
-path=""
+        referer="https://kite.zerodha.com/static/build/chart.html?v=2.6.1"
+        method="get"
+        path=""
 
 def login():
     if driver.current_url!="https://kite.zerodha.com/":
@@ -52,23 +54,23 @@ def marketwatch(S=S):
     mkt=S.get("https://kite.zerodha.com/api/marketwatch",headers=headers1).json()
     return mkt
 
-def position(S=S):
-    referer="https://kite.zerodha.com/dashboard"
-    method="get"
-    path="/oms/portfolio/positions"
-    headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
+        def position(S=S):
+            referer="https://kite.zerodha.com/dashboard"
+            method="get"
+            path="/oms/portfolio/positions"
+            headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
               "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
               "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0",'x-kite-version': '2.6.2'}
-    return S.get("https://kite.zerodha.com/oms/portfolio/positions",headers=headers1).json
+            return S.get("https://kite.zerodha.com/oms/portfolio/positions",headers=headers1).json
 
-def fund(S=S):
-    referer="https://kite.zerodha.com/dashboard"
-    method="get"
-    path="/oms/user/margins"
-    headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
-              "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
-              "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0",'x-kite-version': '2.6.2'}
-    return S.get("https://kite.zerodha.com/oms/user/margins",headers=headers1).json()
+        def fund(S=S):
+            referer="https://kite.zerodha.com/dashboard"
+            method="get"
+            path="/oms/user/margins"
+            headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
+                      "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
+                      "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0",'x-kite-version': '2.6.2'}
+            return S.get("https://kite.zerodha.com/oms/user/margins",headers=headers1).json()
 
 def plceorder(price,quantity,symbol):
     referer="https://kite.zerodha.com/dashboard"
