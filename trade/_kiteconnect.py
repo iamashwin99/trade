@@ -1,12 +1,6 @@
 import time
 import json
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+import datetime as dt
 import requests
 
 S=requests.session()
@@ -24,16 +18,10 @@ symbols=['IBULHSGFIN','AUROPHARMA','ADANIGREEN','CUMMINSIND','INDHOTEL','CHOLAFI
 'DLF','ABBOTINDIA','FEDERALBNK','AJANTPHARM','JINDALSTEL','CESC','MARICO','HDFC','POLYCAB','NTPC','UPL','PFIZER','CUB','VOLTAS','JSWSTEEL','AXISBANK','RECLTD','ONGC','PGHH','TATAPOWER','WHIRLPOOL','VBL','MCDOWELL-N','IGL','INDUSINDBK',
 'SBIN','ICICIBANK','COALINDIA','YESBANK','SBICARD','CANBK','BANKBARODA','BOSCHLTD','KOTAKBANK','LICHSGFIN','APOLLOHOSP','SRTRANSFIN']
 
-options = webdriver.ChromeOptions()
-options.add_argument('-headless')
-options.add_argument('-no-sandbox')
-options.add_argument('-disable-dev-shm-usage')
 referer="https://kite.zerodha.com/static/build/chart.html?v=2.6.1"
 method="get"
 path=""
-driver = webdriver.Chrome(options=options)
-driver.maximize_window()
-  
+
 def login():
     if driver.current_url!="https://kite.zerodha.com/":
        driver.get("https://kite.zerodha.com/")
