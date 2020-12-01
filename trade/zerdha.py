@@ -60,7 +60,7 @@ def position():
     headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
     "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
     "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0",'x-kite-version': '2.6.2'}
-     return s.get("https://kite.zerodha.com/oms/portfolio/positions",headers=headers1).json
+    return s.get("https://kite.zerodha.com/oms/portfolio/positions",headers=headers1).json()
 
 def fund():
     referer="https://kite.zerodha.com/dashboard"
@@ -69,7 +69,7 @@ def fund():
     headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
     "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
     "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0",'x-kite-version': '2.6.2'}
-     return S.get("https://kite.zerodha.com/oms/user/margins",headers=headers1).json()
+    return S.get("https://kite.zerodha.com/oms/user/margins",headers=headers1).json()
 
 def plceorder(price,quantity,symbol):
     referer="https://kite.zerodha.com/dashboard"
