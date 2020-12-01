@@ -98,10 +98,9 @@ def getdata(token,frdate,todate):
     
     url='https://kite.zerodha.com/oms/instruments/historical/'+token+"/minute?user_id=YF6709&oi=1&from="+frdate+'&to='+todate+"&&ciqrandom="+timestamp()
     print(url)
-    return S.get(url,headers=headers1).json()    
-login()
+    return S.get(url,headers=headers1).json()
 time.sleep(3)
 
-head={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,
+    head={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,
       "Connection":"keep-alive","Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest": "empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
       "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"}
