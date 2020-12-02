@@ -39,7 +39,6 @@ def login(uid,pw,twofa):
     res1=s.post("https://kite.zerodha.com/api/twofa",headers=h1,data={"user_id":uid,"request_id":res.json()["data"]["request_id"],"twofa_value":twofa})
     print(res1.text)
     try:
-        global cookie
         cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
     except:
         print("error in getting cookies")
