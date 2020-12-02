@@ -57,6 +57,7 @@ def marketwatch():
     try:
         cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
     except:
+        print("error in getting cookies")
     enctoken=s.cookies.get_dict()['enctoken']
     headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
               "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
@@ -71,6 +72,7 @@ def position():
     try:
         cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
     except:
+        print("error in getting cookies")
     enctoken=s.cookies.get_dict()['enctoken']
     headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
     "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
@@ -84,6 +86,7 @@ def fund():
     try:
         cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
     except:
+        print("error in getting cookies")
     enctoken=s.cookies.get_dict()['enctoken']
     headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
     "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
@@ -97,6 +100,7 @@ def plceorder(price,quantity,symbol):
     try:
         cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
     except:
+        print("error in getting cookies")
     enctoken=s.cookies.get_dict()['enctoken']
     headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
               "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
@@ -115,9 +119,10 @@ def getdata(token,frdate,todate):
     referer="https://kite.zerodha.com/static/build/chart.html?v=2.6.2"
     method="get"
     path='/oms/instruments/historical/'+token+"/minute?user_id=YF6709&oi=1&from="+frdate+'to='+todate+"&ciqrandom="+timestamp()
-    try:
+   try:
         cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
     except:
+        print("error in getting cookies")
     enctoken=s.cookies.get_dict()['enctoken']
     headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
               "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
