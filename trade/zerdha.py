@@ -36,9 +36,8 @@ def login(useid, password,twofa):
     h1={"authority": "kite.zerodha.com","method": "POST","path": "/api/twofa",
     "scheme": "https","accept": "application/json, text/plain, */*","accept-encoding": "gzip, deflate, br","accept-language": "en-US,en;q=0.9,mr;q=0.8,hi;q=0.7","cache-control": "no-cache","content-length": "109","content-type": "application/x-www-form-urlencoded","cookie":cookie,"dnt": "1","origin": "https://kite.zerodha.com","pragma": "no-cache",
     "referer": "https://kite.zerodha.com/","sec-fetch-dest": "empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin","user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36","x-csrftoken": "jDFGuxgIODRRA26hsMYXr203zdckPO8X","x-kite-userid": "YF6709","x-kite-version": "2.6.3"}
-    resp1=s.post("https://kite.zerodha.com/api/twofa",headers=h1,data={"user_id":"YF6709","request_id":b.json()["data"]["request_id"],"twofa_value":twofa})
+    res1=s.post("https://kite.zerodha.com/api/twofa",headers=h1,data={"user_id":"YF6709","request_id":res.json()["data"]["request_id"],"twofa_value":twofa})
     enctoken=s.cookies.get_dict()['enctoken']
-
 def orderbook():
     referer="https://kite.zerodha.com/dashboard"
     method="get"
