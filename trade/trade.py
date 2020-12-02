@@ -1,12 +1,12 @@
 #Auther:-@RahulGhuge
 import requests
-from websocket import create_connection
+#from websocket import create_connection
 from datetime import datetime
 import json
 import time
 import pandas as pd
 
-class scalpert:
+"""class scalpert:
     def __init__(self):
         self.session = requests.Session()
         self.headers={"Accept":"*/*","Accept-Encoding":"gzip, deflate, br","Accept-Language":"en-US,en;q=0.5",
@@ -66,7 +66,7 @@ class scalpert:
         ws.send(json.dumps({"auth":self.enctoken,"defaults":[1,2]}))
         dt=datetime.utcnow().isoformat()[:-3]+'Z'
         print(ws.send(json.dumps({squareoff: {'Pcode': "MIS", 'Netqty': qty, 'Token': token, 'Symbol': sym, 'Exchangeseg': seg}})))
-
+"""
 # from finvasia import scalpert
 # trade=scalpert()
 # trade.login("FA27632","Rahul@123")
