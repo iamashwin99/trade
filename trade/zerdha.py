@@ -37,10 +37,15 @@ def login(uid,pw,twofa):
     "sec-fetch-dest": "empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin","user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36","x-csrftoken": "jDFGuxgIODRRA26hsMYXr203zdckPO8X","x-kite-userid": "YF6709","x-kite-version": "2.6.3"}
     res1=s.post("https://kite.zerodha.com/api/twofa",headers=h1,data={"user_id":uid,"request_id":res.json()["data"]["request_id"],"twofa_value":twofa})
     print(res1.text)
+    return 
 def orderbook():
     referer="https://kite.zerodha.com/dashboard"
     method="get"
     path="/oms/orders"
+    try:
+        cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
+    except:
+    enctoken=s.cookies.get_dict()['enctoken']
     headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
     "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
     "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0",'x-kite-version': '2.6.2'}
@@ -49,6 +54,10 @@ def marketwatch():
     referer="https://kite.zerodha.com/dashboard"
     method="get"
     path="/api/marketwatch"
+    try:
+        cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
+    except:
+    enctoken=s.cookies.get_dict()['enctoken']
     headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
               "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
               "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0","x-csrftoken":pubtoken,'x-kite-version': '2.6.2'}
@@ -59,6 +68,10 @@ def position():
     referer="https://kite.zerodha.com/dashboard"
     method="get"
     path="/oms/portfolio/positions"
+    try:
+        cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
+    except:
+    enctoken=s.cookies.get_dict()['enctoken']
     headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
     "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
     "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0",'x-kite-version': '2.6.2'}
@@ -68,6 +81,10 @@ def fund():
     referer="https://kite.zerodha.com/dashboard"
     method="get"
     path="/oms/user/margins"
+    try:
+        cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
+    except:
+    enctoken=s.cookies.get_dict()['enctoken']
     headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
     "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
     "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0",'x-kite-version': '2.6.2'}
@@ -77,6 +94,10 @@ def plceorder(price,quantity,symbol):
     referer="https://kite.zerodha.com/dashboard"
     method="post"
     path="/oms/order/regular"
+    try:
+        cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
+    except:
+    enctoken=s.cookies.get_dict()['enctoken']
     headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
               "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
               "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0",'x-kite-userid': 'YF6709','x-kite-version': '2.6.2'}
@@ -94,6 +115,10 @@ def getdata(token,frdate,todate):
     referer="https://kite.zerodha.com/static/build/chart.html?v=2.6.2"
     method="get"
     path='/oms/instruments/historical/'+token+"/minute?user_id=YF6709&oi=1&from="+frdate+'to='+todate+"&ciqrandom="+timestamp()
+    try:
+        cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
+    except:
+    enctoken=s.cookies.get_dict()['enctoken']
     headers1={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,"Connection":"keep-alive",
               "Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest":"empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
               "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"}
