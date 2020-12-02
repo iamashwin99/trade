@@ -22,22 +22,21 @@ path=""
 enctoken=""
 cookie=""
 
-def login(useid, password,twofa):
-    s.get("https://kite.zerodha.com/")
-    rawcookie=s.cookies.get_dict()
+def login(uid,pw,twofa):
+    s.get("https://kite.zerodha.com")
     try:
-        cookie="__cfduid="+rawcookie["__cfduid"]+"; kf_session="+rawcookie["kf_session"]
+        cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
     except:
-        print("not received cookies slow network. please retry.")
-    h={"Host": "kite.zerodha.com","cache-control": "max-age=0","save-data": "on","upgrade-insecure-requests": "1","user-agent": "Mozilla/5.0 (Linux; Android 7.1.2; Redmi 5A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Mobile Safari/537.36","sec-fetch-mode":"navigate","sec-fetch-user": "?1","dnt": "1",
-        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3","sec-fetch-site": "none","accept-encoding": "gzip, deflate, br","accept-language": "en-US,en;q=0.9,mr;q=0.8,hi;q=0.7","x-csrftoken":"jDFGuxgIODRRA26hsMYXr203zdckPO8X",
-        "cookie":cookie}
-    res=s.post("https://kite.zerodha.com/api/login",headers=h,data={"user_id":useid,"password": password})
-    h1={"authority": "kite.zerodha.com","method": "POST","path": "/api/twofa",
-    "scheme": "https","accept": "application/json, text/plain, */*","accept-encoding": "gzip, deflate, br","accept-language": "en-US,en;q=0.9,mr;q=0.8,hi;q=0.7","cache-control": "no-cache","content-length": "109","content-type": "application/x-www-form-urlencoded","cookie":cookie,"dnt": "1","origin": "https://kite.zerodha.com","pragma": "no-cache",
-    "referer": "https://kite.zerodha.com/","sec-fetch-dest": "empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin","user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36","x-csrftoken": "jDFGuxgIODRRA26hsMYXr203zdckPO8X","x-kite-userid": "YF6709","x-kite-version": "2.6.3"}
-    res1=s.post("https://kite.zerodha.com/api/twofa",headers=h1,data={"user_id":"YF6709","request_id":res.json()["data"]["request_id"],"twofa_value":twofa})
-    enctoken=s.cookies.get_dict()['enctoken']
+        print("error in getting cookies")
+    h={"Host": "kite.zerodha.com","cache-control": "max-age=0","save-data": "on","upgrade-insecure-requests": "1","user-agent": "Mozilla/5.0 (Linux; Android 7.1.2; Redmi 5A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Mobile Safari/537.36",
+      "sec-fetch-mode":"navigate","sec-fetch-user": "?1","dnt": "1","accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3","sec-fetch-site": "none",
+      "accept-encoding": "gzip, deflate, br","accept-language": "en-US,en;q=0.9,mr;q=0.8,hi;q=0.7","x-csrftoken":"jDFGuxgIODRRA26hsMYXr203zdckPO8X","cookie":cookie}
+    res=s.post("https://kite.zerodha.com/api/login",headers=h,data={"user_id":"YF6709","password":"Rahul@123"})
+    h1={"authority": "kite.zerodha.com","method": "POST","path": "/api/twofa","scheme": "https","accept": "application/json, text/plain, */*","accept-encoding": "gzip, deflate, br","accept-language": "en-US,en;q=0.9,mr;q=0.8,hi;q=0.7",
+    "cache-control": "no-cache","content-length": "109","content-type": "application/x-www-form-urlencoded","cookie":cookie,"dnt": "1","origin": "https://kite.zerodha.com","pragma": "no-cache","referer": "https://kite.zerodha.com/",
+    "sec-fetch-dest": "empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin","user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36","x-csrftoken": "jDFGuxgIODRRA26hsMYXr203zdckPO8X","x-kite-userid": "YF6709","x-kite-version": "2.6.3"}
+    res1=s.post("https://kite.zerodha.com/api/twofa",headers=h1,data={"user_id":uid,"request_id":res.json()["data"]["request_id"],"twofa_value":twofa})
+    print(res1.text)
 def orderbook():
     referer="https://kite.zerodha.com/dashboard"
     method="get"
@@ -103,6 +102,6 @@ def getdata(token,frdate,todate):
     print(url)
     return S.get(url,headers=headers1).json()
 
-head={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,
+headers={"authority": "kite.zerodha.com","method": method,"path": path,"scheme": "https","Accept":"*/*","Accept-Encoding":"utf-8","Accept-Language":"en-US,en;q=0.5","authorization":enctoken,
       "Connection":"keep-alive","Cookie":cookie,"Host":"kite.zerodha.com","Referer":referer,"sec-fetch-dest": "empty","sec-fetch-mode": "cors","sec-fetch-site": "same-origin",
       "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0"}
