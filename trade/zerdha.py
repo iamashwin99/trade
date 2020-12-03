@@ -39,11 +39,13 @@ def login(uid,pw,twofa):
     res1=s.post("https://kite.zerodha.com/api/twofa",headers=h1,data={"user_id":uid,"request_id":res.json()["data"]["request_id"],"twofa_value":twofa})
     print(res1.text)
     try:
-        cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]
+        cookie="__cfduid="+s.cookies.get_dict()["__cfduid"]+"; kf_session="+s.cookies.get_dict()["kf_session"]+"; public_token="+s.cookies.get_dict()["public_token"]+"; user_id=YF6709"+"; enctoken="+self.enctoken
     except:
         print("error in getting cookies")
     global enctoken
     enctoken=s.cookies.get_dict()["enctoken"]
+    global pubtoken
+    pubtoken="+s.cookies.get_dict()["public_token"]
 
 def orderbook():
     referer="https://kite.zerodha.com/dashboard"
