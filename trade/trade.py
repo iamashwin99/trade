@@ -93,7 +93,7 @@ class shoonya:
         self.tokenid=self.response['userdata']['TOKENID']
         self.cookie="JSESSIONID="+self.session.cookies.get_dict()["JSESSIONID"]["value"]
     def marketwatch():
-        data={"{"token_id":"678e504215d7f9010a44","keyid":"RCa/A1feDFYJdXATw2gQS0DJ3jgDBw28NHkmFBk/szA=","userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}:""}
+        #data={"{"token_id":"678e504215d7f9010a44","keyid":"RCa/A1feDFYJdXATw2gQS0DJ3jgDBw28NHkmFBk/szA=","userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}:""}
         h={"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate, br",
         "Accept-Language": "en-US,en;q=0.9,mr;q=0.8,hi;q=0.7","Authorisation": "Token "+self.enctoken,"Cache-Control": "no-cache","Connection": "keep-alive","Content-Length": "247",
         "Content-Type": "application/x-www-form-urlencoded","Cookie": self.cookie,"DNT": "1","Host": "shoonya.finvasia.com","Origin": "https://shoonya.finvasia.com","Pragma": "no-cache",
