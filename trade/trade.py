@@ -81,7 +81,7 @@ class shoonya:
         self.response=""
         self.tokenid=""
         self.key=""
-        
+        self.cookie=""
     def login(self,email=None, password=None,pan=None):
         self.session.get("https://shoonya.finvasia.com/")
         data={"{\"userName\":\"FA27632\",\"pan\":\"CJEPG1375B\",\"role\":\"admin\",\"pass\":\"Rahul@123\"}": ""}
@@ -91,3 +91,13 @@ class shoonya:
         self.response=self.session.post("https://shoonya.finvasia.com/trade/login",headers=h,data=data).json()
         self.key=self.response['key']
         self.tokenid=self.response['userdata']['TOKENID']
+        self.cookie="JSESSIONID="+self.session.cookies.get_dict()["JSESSIONID"]["value"]
+    def marketwatch():
+        data={"{\"userName\":\"FA27632\",\"pan\":\"CJEPG1375B\",\"role\":\"admin\",\"pass\":\"Rahul@123\"}": ""}
+        h={"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate, br",
+        "Accept-Language": "en-US,en;q=0.9,mr;q=0.8,hi;q=0.7","Authorisation": "Token "+self.enctoken,"Cache-Control": "no-cache","Connection": "keep-alive","Content-Length": "247",
+        "Content-Type": "application/x-www-form-urlencoded","Cookie": self.cookie,"DNT": "1","Host": "shoonya.finvasia.com","Origin": "https://shoonya.finvasia.com","Pragma": "no-cache",
+        "Referer": "https://shoonya.finvasia.com/","Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors","Sec-Fetch-Site": "same-origin","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"}
+
+        return self.session.post("https://shoonya.finvasia.com/trade/getWatchlistName",headers=h,data=data).json()
