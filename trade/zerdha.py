@@ -45,7 +45,7 @@ def login(uid,pw,twofa):
     global enctoken
     enctoken=s.cookies.get_dict()["enctoken"]
     global pubtoken
-    pubtoken="+s.cookies.get_dict()["public_token"]
+    pubtoken=s.cookies.get_dict()["public_token"]
 
 def orderbook():
     referer="https://kite.zerodha.com/dashboard"
