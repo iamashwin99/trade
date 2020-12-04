@@ -97,7 +97,7 @@ class shoonya:
         self.key=self.response['key']
         self.tokenid=self.response['userdata']['TOKENID']
         self.cookie="JSESSIONID="+self.session.cookies.get_dict()["JSESSIONID"]["value"]
-        self.pan=['userdata']["USERID"]["PANNO"]
+        self.pan=['userdata']["USERID"]["PANO"]
         self.ucode=self.response['userdata']["USERID"]
     def marketwatch():
         t1="{\"token_id\":"+self.tokenid+",\"keyid\":"+self.keyid+",\"userid\":"+self.uid+"\"clienttype\":\"C\",\"usercode\":"+self.ucode+",\"pan_no\":"+self.pan+"}"
