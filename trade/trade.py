@@ -82,13 +82,14 @@ class shoonya:
         self.tokenid=""
         self.key=""
         self.cookie=""
-        self.email=""
         self.uid=""
+        self.ucode=""
+        
     def login(self,email=None, password=None,pan=None):
-        self.uid=email
         self.session.get("https://shoonya.finvasia.com/")
         d1="{\"userName\":"+email+",\"pan\":"+pan+",\"role\":\"admin\",\"pass\":"+password+"}"
         data={d1:""}
+        self.uid=email
         self.enctoken=self.session.post("https://shoonya.finvasia.com/jwt/token",headers=self.headers,data=data).text
         h=self.headers
         h.update({'Authorisation':'Token '+self.enctoken})
@@ -98,7 +99,7 @@ class shoonya:
         self.cookie="JSESSIONID="+self.session.cookies.get_dict()["JSESSIONID"]["value"]
         self.pan=['userdata']["USERID"]["PANNO"]
         self.ucode=self.response['userdata']["USERID"]
-    def marketwatch(uid):
+    def marketwatch():
         t1="{\"token_id\":"+self.tokenid+",\"keyid\":"+self.keyid+",\"userid\":"+self.uid+"\"clienttype\":\"C\",\"usercode\":"+self.ucode+",\"pan_no\":"+self.pan+"}"
         data={t1:""}
         h={"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate, br",
