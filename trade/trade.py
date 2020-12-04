@@ -82,9 +82,13 @@ class shoonya:
         self.tokenid=""
         self.key=""
         self.cookie=""
+        self.email=""
+        self.uid=""
     def login(self,email=None, password=None,pan=None):
+        self.uid=email
         self.session.get("https://shoonya.finvasia.com/")
-        data={"{\"userName\":\"FA27632\",\"pan\":\"CJEPG1375B\",\"role\":\"admin\",\"pass\":\"Rahul@123\"}": ""}
+        d1="{\"userName\":"+email+",\"pan\":"+pan+",\"role\":\"admin\",\"pass\":"+password+"}"
+        data={d1:""}
         self.enctoken=self.session.post("https://shoonya.finvasia.com/jwt/token",headers=self.headers,data=data).text
         h=self.headers
         h.update({'Authorisation':'Token '+self.enctoken})
@@ -92,8 +96,11 @@ class shoonya:
         self.key=self.response['key']
         self.tokenid=self.response['userdata']['TOKENID']
         self.cookie="JSESSIONID="+self.session.cookies.get_dict()["JSESSIONID"]["value"]
-    def marketwatch():
-        #data={"{"token_id":"678e504215d7f9010a44","keyid":"RCa/A1feDFYJdXATw2gQS0DJ3jgDBw28NHkmFBk/szA=","userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}:""}
+        self.pan=['userdata']["USERID"]["PANNO"]
+        self.ucode=self.response['userdata']["USERID"]
+    def marketwatch(uid):
+        t1="{\"token_id\":"+self.tokenid+",\"keyid\":"+self.keyid+",\"userid\":"+self.uid+"\"clienttype\":\"C\",\"usercode\":"+self.ucode+",\"pan_no\":"+self.pan+"}"
+        data={t1:""}
         h={"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate, br",
         "Accept-Language": "en-US,en;q=0.9,mr;q=0.8,hi;q=0.7","Authorisation": "Token "+self.enctoken,"Cache-Control": "no-cache","Connection": "keep-alive","Content-Length": "247",
         "Content-Type": "application/x-www-form-urlencoded","Cookie": self.cookie,"DNT": "1","Host": "shoonya.finvasia.com","Origin": "https://shoonya.finvasia.com","Pragma": "no-cache",
