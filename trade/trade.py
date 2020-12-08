@@ -94,11 +94,7 @@ class shoonya:
         h=self.headers
         h.update({'Authorisation':'Token '+self.enctoken})
         self.response=self.session.post("https://shoonya.finvasia.com/trade/login",headers=h,data=data).json()
-        self.key=self.response['key']
-        self.tokenid=self.response['userdata']['TOKENID']
-        
-        self.pan=['userdata']["USERID"]["PANO"]
-        self.ucode=self.response['userdata']["USERID"]
+
     def fund(self):
         temp={"token_id":self.tokenid,"keyid":self.key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
         data={str(temp):""}
@@ -113,4 +109,7 @@ class shoonya:
         "Origin": "https://shoonya.finvasia.com",
         "Connection": "keep-alive","Cookie":self.cookie, "Authorisation":"Token"+self.enctoken}
         return self.session.post("https://shoonya.finvasia.com/trade/getLimits",headers=headers,data=data).json()
-   
+    def credential(self):
+        self.tokenid=self.response["userdata"]["TOKENID"]
+        self.key=self.response["key"]
+        self.cookie="JSESSIONID="+self.session.cookies.get_dict()["JSESSIONID"]
