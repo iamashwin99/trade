@@ -96,16 +96,21 @@ class shoonya:
         self.response=self.session.post("https://shoonya.finvasia.com/trade/login",headers=h,data=data).json()
         self.key=self.response['key']
         self.tokenid=self.response['userdata']['TOKENID']
-        self.cookie="JSESSIONID="+self.session.cookies.get_dict()["JSESSIONID"]["value"]
+        
         self.pan=['userdata']["USERID"]["PANO"]
         self.ucode=self.response['userdata']["USERID"]
-    def marketwatch():
-        t1="{\"token_id\":"+self.tokenid+",\"keyid\":"+self.keyid+",\"userid\":"+self.uid+"\"clienttype\":\"C\",\"usercode\":"+self.ucode+",\"pan_no\":"+self.pan+"}"
-        data={t1:""}
-        h={"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "en-US,en;q=0.9,mr;q=0.8,hi;q=0.7","Authorisation": "Token "+self.enctoken,"Cache-Control": "no-cache","Connection": "keep-alive","Content-Length": "247",
-        "Content-Type": "application/x-www-form-urlencoded","Cookie": self.cookie,"DNT": "1","Host": "shoonya.finvasia.com","Origin": "https://shoonya.finvasia.com","Pragma": "no-cache",
-        "Referer": "https://shoonya.finvasia.com/","Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors","Sec-Fetch-Site": "same-origin","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"}
-
-        return self.session.post("https://shoonya.finvasia.com/trade/getWatchlistName",headers=h,data=data).json()
+    def fund(self):
+        temp={"token_id":self.tokenid,"keyid":self.key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
+        data={str(temp):""}
+        headers={"Host": "shoonya.finvasia.com",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0",
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Length": "536",
+        "Referer": "https://shoonya.finvasia.com/",
+        "Origin": "https://shoonya.finvasia.com",
+        "Connection": "keep-alive","Cookie":self.cookie, "Authorisation":"Token"+self.enctoken}
+        return self.session.post("https://shoonya.finvasia.com/trade/getLimits",headers=headers,data=data).json()
+   
