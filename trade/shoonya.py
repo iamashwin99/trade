@@ -34,11 +34,11 @@ def fund():
         "Referer": "https://shoonya.finvasia.com/",
         "Origin": "https://shoonya.finvasia.com",
         "Connection": "keep-alive","Cookie":self.cookie, "Authorisation":"Token"+enctoken}
-        return s.post("https://shoonya.finvasia.com/trade/getLimits",headers=headers,data=data).json()
-    def credential(self):
-        global tokenid
-        global key
-        global cookie
-        tokenid=response["userdata"]["TOKENID"]
-        key=response["key"]
-        cookie="JSESSIONID="+s.cookies.get_dict()["JSESSIONID"]
+    return s.post("https://shoonya.finvasia.com/trade/getLimits",headers=headers,data=data).json()
+def credential(self):
+    global tokenid
+    global key
+    global cookie
+    tokenid=response["userdata"]["TOKENID"]
+    key=response["key"]
+    cookie="JSESSIONID="+s.cookies.get_dict()["JSESSIONID"]
