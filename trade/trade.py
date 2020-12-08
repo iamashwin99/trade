@@ -66,7 +66,7 @@ import pandas as pd
         ws.send(json.dumps({"auth":self.enctoken,"defaults":[1,2]}))
         dt=datetime.utcnow().isoformat()[:-3]+'Z'
         print(ws.send(json.dumps({squareoff: {'Pcode': "MIS", 'Netqty': qty, 'Token': token, 'Symbol': sym, 'Exchangeseg': seg}})))
-"""
+
 # from finvasia import scalpert
 # trade=scalpert()
 # trade.login("FA27632","Rahul@123")
@@ -113,3 +113,4 @@ class shoonya:
         self.tokenid=self.response["userdata"]["TOKENID"]
         self.key=self.response["key"]
         self.cookie="JSESSIONID="+self.session.cookies.get_dict()["JSESSIONID"]
+"""
