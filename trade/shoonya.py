@@ -39,6 +39,6 @@ def credential():
     global tokenid
     global key
     global cookie
-    tokenid=response()["userdata"]["TOKENID"]
-    key=response()["key"]
+    tokenid=response(["userdata"]["TOKENID"])
+    key=response(["key"])
     cookie="JSESSIONID="+s.cookies.get_dict()["JSESSIONID"]
