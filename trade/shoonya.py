@@ -24,16 +24,17 @@ def fund(tokenid,key):
     temp={"token_id":tokenid,"keyid":key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
     data={str(temp):""}
     headers={"Host": "shoonya.finvasia.com",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0",
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Language": "en-US,en;q=0.5",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Content-Length": "536",
-        "Referer": "https://shoonya.finvasia.com/",
-        "Origin": "https://shoonya.finvasia.com",
-        "Connection": "keep-alive","Cookie":cookie, "Authorisation":"Token "+enctoken}
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0",
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "en-US,en;q=0.5",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Content-Length": "536",
+    "Referer": "https://shoonya.finvasia.com/",
+    "Origin": "https://shoonya.finvasia.com",
+    "Connection": "keep-alive", "Authorisation":"Token "+enctoken,"Cookie":cookie}
     return s.post("https://shoonya.finvasia.com/trade/getLimits",headers=headers,data=data).json()
+
 def credential():
     global cookie
     cookie="JSESSIONID="+s.cookies.get_dict()["JSESSIONID"]
