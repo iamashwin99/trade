@@ -6,7 +6,7 @@ import time
 import pandas as pd
 
 s=requests.session()
-
+response=None
 def login(email, password,pan):
     headers={'Accept':'application/json, text/plain, */*','Accept-Encoding':'gzip, deflate, br','Accept-Language':'en-US,en;q=0.5',
         'Connection':'keep-alive','Content-Length':'127','Content-Type':'application/x-www-form-urlencoded','Host':'shoonya.finvasia.com','Origin':'https://shoonya.finvasia.com',
@@ -18,8 +18,7 @@ def login(email, password,pan):
     enctoken=s.post("https://shoonya.finvasia.com/jwt/token",headers=headers,data=data).text
     h=headers
     h.update({'Authorisation':'Token '+enctoken})
-    global response
-    response=s.post("https://shoonya.finvasia.com/trade/login",headers=h,data=data).json
+    return s.post("https://shoonya.finvasia.com/trade/login",headers=h,data=data).json
 def fund(tokenid,key):
     temp={"token_id":tokenid,"keyid":key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
     data={str(temp):""}
