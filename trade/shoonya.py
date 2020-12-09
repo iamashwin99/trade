@@ -23,8 +23,8 @@ def login(email, password,pan):
     cookie=response.headers['Set-Cookie'].replace("; Path=/; HttpOnly","")
     global tokenid
     global key
-    tokenid=response()["userdata"]["TOKENID"]
-    key=response()["key"]
+    tokenid=response.json()["userdata"]["TOKENID"]
+    key=response.json()["key"]
 
 def fund(tokenid,key):
     temp={"token_id":tokenid,"keyid":key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
