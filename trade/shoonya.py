@@ -26,7 +26,7 @@ def login(email, password,pan):
     tokenid=response.json()["userdata"]["TOKENID"]
     key=response.json()["key"]
 
-def fund(tokenid,key):
+def fund():
     temp={"token_id":tokenid,"keyid":key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
     data={str(temp):""}
     headers={"Host": "shoonya.finvasia.com",
