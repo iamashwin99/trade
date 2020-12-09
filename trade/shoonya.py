@@ -15,7 +15,7 @@ def login(email, password,pan):
     d1={"userName":email,"pan":pan,"role":"admin","pass": password}
     data={str(d1):""}
     global enctoken
-    enctoken=s.post("https://shoonya.finvasia.com/jwt/token",headers=self.headers,data=data).text
+    enctoken=s.post("https://shoonya.finvasia.com/jwt/token",headers=headers,data=data).text
     h=headers
     h.update({'Authorisation':'Token '+enctoken})
     global response
@@ -33,9 +33,9 @@ def fund():
         "Content-Length": "536",
         "Referer": "https://shoonya.finvasia.com/",
         "Origin": "https://shoonya.finvasia.com",
-        "Connection": "keep-alive","Cookie":self.cookie, "Authorisation":"Token"+enctoken}
+        "Connection": "keep-alive","Cookie":cookie, "Authorisation":"Token"+enctoken}
     return s.post("https://shoonya.finvasia.com/trade/getLimits",headers=headers,data=data).json()
-def credential(self):
+def credential():
     global tokenid
     global key
     global cookie
