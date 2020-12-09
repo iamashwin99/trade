@@ -41,3 +41,18 @@ def fund():
     "Connection": "keep-alive",
     "Cookie": cookie, "Authorisation":"Token "+enctoken} 
     return s.post("https://shoonya.finvasia.com/trade/getLimits",headers=headers,data=data).json()
+def orderbook():
+    temp={"row_1":"","row_2":"","exch":"","seg":"","product":"","status":"","inst":"","symbol":"","str_price":"","place_by":"","opt_type":"","exp_dt":"","token_id":tokenid,"keyid":key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
+    data={str(temp):""}
+    headers={"Host": "shoonya.finvasia.com",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0",
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "en-US,en;q=0.5",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Content-Length": "249",
+    "Referer": "https://shoonya.finvasia.com/",
+    "Origin": "https://shoonya.finvasia.com",
+    "Connection": "keep-alive",
+    "Cookie": cookie, "Authorisation":"Token "+enctoken} 
+    return s.post("https://shoonya.finvasia.com/trade/getOrderbook",headers=headers,data=data).json() 
