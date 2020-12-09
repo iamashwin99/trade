@@ -20,7 +20,11 @@ def login(email, password,pan):
     h.update({'Authorisation':'Token '+enctoken})
     global response
     response=s.post("https://shoonya.finvasia.com/trade/login",headers=h,data=data).json
-        
+    global tokenid
+    global key
+    tokenid=response["userdata"]["TOKENID"]
+    key=response["key"]
+    
 def fund():
     temp={"token_id":tokenid,"keyid":key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
     data={str(temp):""}
@@ -36,9 +40,5 @@ def fund():
         "Connection": "keep-alive","Cookie":cookie, "Authorisation":"Token"+enctoken}
     return s.post("https://shoonya.finvasia.com/trade/getLimits",headers=headers,data=data).json()
 def credential():
-    global tokenid
-    global key
     global cookie
-    tokenid=response(["userdata"]["TOKENID"])
-    key=response(["key"])
     cookie="JSESSIONID="+s.cookies.get_dict()["JSESSIONID"]
