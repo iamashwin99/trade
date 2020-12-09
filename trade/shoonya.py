@@ -12,14 +12,14 @@ def login(email=None, password=None,pan=None):
         'Connection':'keep-alive','Content-Length':'127','Content-Type':'application/x-www-form-urlencoded','Host':'shoonya.finvasia.com','Origin':'https://shoonya.finvasia.com',
         'Referer':'https://shoonya.finvasia.com/','User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0'}
     s.get("https://shoonya.finvasia.com/")
-    d1="{\"userName\":"+email+",\"pan\":"+pan+",\"role\":\"admin\",\"pass\":"+password+"}"
-    data={d1:""}
+    d1={"userName":email,"pan":pan,"role":"admin","pass":password}
+    data={str(d1):""}
     global enctoken
     enctoken=s.post("https://shoonya.finvasia.com/jwt/token",headers=self.headers,data=data).text
     h=headers
     h.update({'Authorisation':'Token '+enctoken})
     global response
-    response=self.session.post("https://shoonya.finvasia.com/trade/login",headers=h,data=data).json
+    response=s.post("https://shoonya.finvasia.com/trade/login",headers=h,data=data).json
         
 def fund():
     temp={"token_id":tokenid,"keyid":key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
