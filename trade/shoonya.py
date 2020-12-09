@@ -20,12 +20,7 @@ def login(email, password,pan):
     h.update({'Authorisation':'Token '+enctoken})
     global response
     response=s.post("https://shoonya.finvasia.com/trade/login",headers=h,data=data).json
-    global tokenid
-    global key
-    tokenid=response["userdata"]["TOKENID"]
-    key=response["key"]
-    
-def fund():
+def fund(tokenid,key):
     temp={"token_id":tokenid,"keyid":key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
     data={str(temp):""}
     headers={"Host": "shoonya.finvasia.com",
