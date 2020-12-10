@@ -93,3 +93,7 @@ def getdata(secid=3045):
     temp={"SecIdxCode":secid,"Exch":1,"ScripIdLst":[],"Seg":1}
     data={"Count":1,"Data":str(temp),"DoCompress":False,"RequestCode":129,"Reserved":"SMC0121","Source":"W","UserId":"FA27632"}
     return s.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed",headers=headers,data=data)
+def timestamp():
+    tmstmp=str(time.time())
+    ciqrand=tmstmp[0]+tmstmp[1]+tmstmp[2]+tmstmp[3]+tmstmp[4]+tmstmp[5]+tmstmp[6]+tmstmp[7]+tmstmp[8]+tmstmp[9]+tmstmp[11]+tmstmp[12]+tmstmp[13]
+    return ciqrand
