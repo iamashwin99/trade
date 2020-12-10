@@ -73,8 +73,14 @@ def position():
     "Cookie": cookie, "Authorisation":"Token "+enctoken} 
     return s.post("https://shoonya.finvasia.com/trade/getNetposition",headers=headers,data=data).json()
 def order(price,qty,secid):
-    temp={"qty":qty,"price":price,"odr_type":"LMT","product_typ":"I","trg_prc":0,"validity":"DAY","disc_qty":0,"amo":"False","sec_id":"17963","inst_type":"EQUITY","exch":"NSE","buysell":"B","gtdDate":"0000-00-00","mktProtectionFlag":"N","mktProtectionVal":0,"settler":"000000000000","token_id":tokenid,"keyid":key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
+    temp={"qty":qty,"price":price,"odr_type":"LMT","product_typ":"I","trg_prc":0,"validity":"DAY","disc_qty":0,"amo":False,"sec_id":"17963","inst_type":"EQUITY","exch":"NSE","buysell":"B","gtdDate":"0000-00-00","mktProtectionFlag":"N","mktProtectionVal":0,"settler":"000000000000","token_id":tokenid,"keyid":key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
     data={str(temp):""}
     headers={"Accept": "application/json text/plain */*","Accept-Encoding": "gzip deflate br","Accept-Language": "en-USen;q=0.5","Authorisation": "Token"+ enctoken,"Host": "shoonya.finvasia.com","Origin": "https://shoonya.finvasia.com","Referer": "https://shoonya.finvasia.com/",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0"}
     return s.post("https://shoonya.finvasia.com/trade/placeorder",headers=headers,data=data).json()
+def getdata(secid,):
+    headers={"Accept:*/*","Accept": "*/*","Accept-Encoding": "gzip deflate br","Accept-Language": "en-USen;q=0.5","Connection":"keep-alive","Content-Length": "197","Content-Type": "application/json","Host": "shoonyabrd.finvasia.com",
+	"Origin": "https://shoonyabrd.finvasia.com","Referer": "https://shoonyabrd.finvasia.com/Charts/chartw.html","TE": "Trailers","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0"}
+    temp={"SecIdxCode":"3045","Exch":1,"ScripIdLst":[],"Seg":1}
+    data={"Count":1,"Data":str(temp),"DoCompress":False,"RequestCode":129,"Reserved":"SMC0121","Source":"W","UserId":"FA27632"}
+    return s.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed",headers=headers,data=data).json()
