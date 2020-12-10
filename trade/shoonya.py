@@ -92,4 +92,4 @@ def getdata(secid=3045):
 	"Origin": "https://shoonyabrd.finvasia.com","Referer": "https://shoonyabrd.finvasia.com/Charts/chartw.html","TE": "Trailers","User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0"}
     temp={"SecIdxCode":secid,"Exch":1,"ScripIdLst":[],"Seg":1}
     data={"Count":1,"Data":str(temp),"DoCompress":False,"RequestCode":129,"Reserved":"SMC0121","Source":"W","UserId":"FA27632"}
-    return s.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed",headers=headers,data=data).json()
+    return s.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed",headers=headers,data=data)
