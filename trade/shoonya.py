@@ -106,7 +106,7 @@ def getdata(secid,fdt=1,tdt=1):
     data={"Count": 10,"Data": str(temp),"DoCompress": False,
     "RequestCode": 800,"Reserved": "","Source": "W","UserId": "FA27632"}
     t=timestamp()
-    return pd.DataFrame(s.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed?ciqrandom="+t,headers=headers,data=data).json())
+    return s.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed?ciqrandom="+t,headers=headers,data=data).json()
 
 def timestamp():
     tmstmp=str(time.time())
