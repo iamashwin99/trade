@@ -7,6 +7,8 @@ import pandas as pd
 
 s=requests.session()
 response=""
+balance=""
+
 def login(email, password,pan):
     headers={'Accept':'application/json, text/plain, */*','Accept-Encoding':'gzip, deflate, br','Accept-Language':'en-US,en;q=0.5',
         'Connection':'keep-alive','Content-Length':'127','Content-Type':'application/x-www-form-urlencoded','Host':'shoonya.finvasia.com','Origin':'https://shoonya.finvasia.com',
@@ -101,14 +103,8 @@ def getdata(secid,fdt=1,tdt=1):
     'Connection': 'keep-alive',
     'Referer': 'https://shoonyabrd.finvasia.com/Charts/chartw.html'}
     temp={"Exch":"NSE","Seg":"E","ScripId":secid,"FromDate":fdt,"ToDate":tdt,"Time":1}
-    data={
-    "Count": 10,
-    "Data": str(temp),
-    "DoCompress": False,
-    "RequestCode": 800,
-    "Reserved": "",
-    "Source": "W",
-    "UserId": "FA27632"}
+    data={"Count": 10,"Data": str(temp),"DoCompress": False,
+    "RequestCode": 800,"Reserved": "","Source": "W","UserId": "FA27632"}
     t=timestamp()
     return pd.DataFrame(s.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed?ciqrandom="+t,headers=headers,data=data).json())
 
