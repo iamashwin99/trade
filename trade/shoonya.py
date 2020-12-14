@@ -6,8 +6,6 @@ import time
 import pandas as pd
 
 s=requests.session()
-response=""
-balance=""
 
 def login(email, password,pan):
     headers={'Accept':'application/json, text/plain, */*','Accept-Encoding':'gzip, deflate, br','Accept-Language':'en-US,en;q=0.5',
