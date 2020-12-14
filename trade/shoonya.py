@@ -40,6 +40,7 @@ def fund():
     "Origin": "https://shoonya.finvasia.com",
     "Connection": "keep-alive",
     "Cookie": cookie, "Authorisation":"Token "+enctoken} 
+
     return s.post("https://shoonya.finvasia.com/trade/getLimits",headers=headers,data=data).json()
 
 def orderbook():
@@ -72,7 +73,10 @@ def position():
     "Origin": "https://shoonya.finvasia.com",
     "Connection": "keep-alive",
     "Cookie": cookie, "Authorisation":"Token "+enctoken} 
-    return s.post("https://shoonya.finvasia.com/trade/getNetposition",headers=headers,data=data).json()
+    global balance
+    acbalance=s.post("https://shoonya.finvasia.com/trade/getNetposition",headers=headers,data=data).json()
+    balance=acbalance[0]['AVAILABLE_BALANCE']
+    return acbalance
 
 def order(price,qty,secid):
     temp={"qty":qty,"price":price,"odr_type":"LMT","product_typ":"I","trg_prc":0,"validity":"DAY","disc_qty":0,"amo":False,"sec_id":"17963","inst_type":"EQUITY","exch":"NSE","buysell":"B","gtdDate":"0000-00-00","mktProtectionFlag":"N","mktProtectionVal":0,"settler":"000000000000","token_id":tokenid,"keyid":key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
