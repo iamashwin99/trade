@@ -42,8 +42,10 @@ def fund():
     "Origin": "https://shoonya.finvasia.com",
     "Connection": "keep-alive",
     "Cookie": cookie, "Authorisation":"Token "+enctoken} 
-
-    return s.post("https://shoonya.finvasia.com/trade/getLimits",headers=headers,data=data).json()
+    global balance
+    acbalance=s.post("https://shoonya.finvasia.com/trade/getLimits",headers=headers,data=data).json()
+    balance=float(acbalance[0]['AVAILABLE_BALANCE'])
+    return acbalance
 
 def orderbook():
     temp={"row_1":"","row_2":"","exch":"","seg":"","product":"","status":"","inst":"","symbol":"","str_price":"","place_by":"","opt_type":"","exp_dt":"","token_id":tokenid,"keyid":key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
@@ -59,9 +61,7 @@ def orderbook():
     "Origin": "https://shoonya.finvasia.com",
     "Connection": "keep-alive",
     "Cookie": cookie, "Authorisation":"Token "+enctoken} 
-    global balance
-    acbalance=s.post("https://shoonya.finvasia.com/trade/getOrderbook",headers=headers,data=data).json()
-    balance=float(acbalance[0]['AVAILABLE_BALANCE'])
+    return s.post("https://shoonya.finvasia.com/trade/getOrderbook",headers=headers,data=data).json()
 
 def position():
     temp={"row_1":"","row_2":"","exch":"","seg":"","product":"","v_mode":"","status":"","Inst":"","symbol":"","str_price":"","place_by":"","opt_type":"","exp_dt":"","token_id":tokenid,"keyid":key,"userid":"FA27632","clienttype":"C","usercode":"13549","pan_no":"CJEPG1375B"}
