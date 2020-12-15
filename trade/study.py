@@ -22,5 +22,5 @@ def vwap(pricedf):
     Arg:-
     pricedata= intraday data of today in dataframe
     """
-    pricedf['vwap']=(((pricedf['Close']+pricedf['Low']+pricedf['High'])/3)*pricedf['Volume']).cumsum())/pricedf['Volume'].cumsum()
+    pricedf['vwap']=(((pricedf['Close']+pricedf['Low']+pricedf['High'])/3)*pricedf['Volume'].cumsum())/pricedf['Volume'].cumsum()
     return pricedf['vwap'].iloc[-1]
