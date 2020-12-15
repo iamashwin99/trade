@@ -93,7 +93,7 @@ def order(price,qty,secid):
     "Cookie": cookie, "Authorisation":"Token "+enctoken}
     return s.post("https://shoonya.finvasia.com/trade/placeorder",headers=headers,data=data).json()
 
-def getdata(secid,fdt=1,tdt=1):
+def getdata(secid,fdt=1,tdt=1,S=s):
     headers={'Host': 'shoonyabrd.finvasia.com',"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0",
     "Accept": "*/*","Accept-Encoding": "utf-8","Accept-Language": "en-USen;q=0.5",
     "Content-Length": "197",
@@ -104,7 +104,7 @@ def getdata(secid,fdt=1,tdt=1):
     data={"Count": 10,"Data": str(temp),"DoCompress": False,
     "RequestCode": 800,"Reserved": "","Source": "W","UserId": "FA27632"}
     t=timestamp()
-    return s.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed?ciqrandom="+t,headers=headers,data=data).json()
+    return S.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed?ciqrandom="+t,headers=headers,data=data).json()
 
 def timestamp():
     tmstmp=str(time.time())
