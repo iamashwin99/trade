@@ -91,7 +91,8 @@ def order(price,qty,secid):
     "Origin": "https://shoonya.finvasia.com",
     "Connection": "keep-alive",
     "Cookie": cookie, "Authorisation":"Token "+enctoken}
-    return s.post("https://shoonya.finvasia.com/trade/placeorder",headers=headers,data=data).json()
+    ord=s.post("https://shoonya.finvasia.com/trade/placeorder",headers=headers,data=data).json()
+    return ord[0]["status"]
 
 def getdata(secid,fdt=1,tdt=1):
     headers={'Host': 'shoonyabrd.finvasia.com',"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0",
