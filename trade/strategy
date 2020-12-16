@@ -1,1 +1,6 @@
+from trade.study import *
 
+
+def trade_on_vwap(dfdata):
+    vwap_value=vwap(dfdta)
+    if 
