@@ -1,4 +1,4 @@
-{
+sym={
   "responseHeader": {
     "status": 0,
     "QTime": 1,
