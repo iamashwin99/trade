@@ -1,4 +1,4 @@
-def stop-loss(ltp,sl,bs="B"):
+def stop_loss_hit(ltp,sl,bs="B"):
     """
     :param ltp=last price of current position
     :param sl=stop loss defined by system for current position
