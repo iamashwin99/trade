@@ -14,3 +14,13 @@ def stop-loss(ltp,sl,bs="B"):
        return "slhit"
     elif bs=='S' and ltp<sl:
        return "slnothit"
+def sl_modify(abs_sl,sl,ltp,bs_price):
+    """
+    :param sl=stop loss defined by system.
+    :param ltp=ltp of open instrument.
+    :param bs_price=buy or sell price of open instrument.
+    :param abs_sl=sl at the time of buy.
+    """
+    if (ltp-sl)>abs_sl:
+       sl=ltp-abs_sl
+       return sl
