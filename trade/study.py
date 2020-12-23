@@ -22,7 +22,9 @@ def vwap(pricedf):
     Arg:-
     pricedata= intraday data of today in dataframe
     """
-    pricedf['vwap']=(((pricedf['Close']+pricedf['Low']+pricedf['High'])/3)*pricedf['Volume'].cumsum())/pricedf['Volume'].cumsum()
+    pricedf["temp"]=((pricedf['Close']+pricedf['Low']+pricedf['High'])/3)*pricedf['Volume']
+    pricedf['vwap']=pricedf["temp"].cumsum()/pricedf['Volume'].cumsum()
+    pricedf.drop('temp', inplace=True, axis=1)
     return pricedf
 
 def vwap_last(pricedf):
@@ -30,5 +32,7 @@ def vwap_last(pricedf):
     Arg:-
     pricedata= intraday data of today in dataframe
     """
-    pricedf['vwap']=(((pricedf['Close']+pricedf['Low']+pricedf['High'])/3)*pricedf['Volume'].cumsum())/pricedf['Volume'].cumsum()
+    pricedf["temp"]=((pricedf['Close']+pricedf['Low']+pricedf['High'])/3)*pricedf['Volume']
+    pricedf['vwap']=pricedf["temp"].cumsum()/pricedf['Volume'].cumsum()
+    pricedf.drop('temp', inplace=True, axis=1)
     return pricedf['vwap'].iloc[-1]
