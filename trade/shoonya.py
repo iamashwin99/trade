@@ -131,7 +131,7 @@ def get_ltp(secid,seg="1"):
     "accept-language": "en-US,en;q\u003d0.9,mr;q\u003d0.8,hi;q\u003d0.7"}
     temp={"SecIdxCode":secid,"Exch":1,"ScripIdLst":[],"Seg":seg}
     data={"Count":1,"Data":str(temp),"DoCompress":False,"RequestCode":129,"Reserved":"SMC0121","Source":"W","UserId":"FA27632"}
-    return pd.DataFrame(s.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed",headers=headers,data=data).json())
+    return s.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed",headers=headers,data=data).json()
 
 def timestamp():
     tmstmp=str(time.time())
