@@ -109,6 +109,30 @@ def getdata(secid,fdt=1,tdt=1,seg="E"):
     t=timestamp()
     return pd.DataFrame(s.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed?ciqrandom="+t,headers=headers,data=data).json())
 
+def get_ltp(secid,seg="1"):
+    """ seg=1 for eq 2 for fno
+    """
+    headers={
+    "Host": "shoonyabrd.finvasia.com",
+    "content-length": "175",
+    "sec-ch-ua": "\"Google Chrome\";v\u003d\"87\", \" Not;A Brand\";v\u003d\"99\", \"Chromium\";v\u003d\"87\"",
+    "dnt": "1",
+    "sec-ch-ua-mobile": "?1",
+    "save-data": "on",
+    'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0',
+    "content-type": "application/json",
+    "accept": "*/*",
+    "origin": "https://shoonyabrd.finvasia.com",
+    "sec-fetch-site": "same-origin",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-dest": "empty",
+    "referer": "https://shoonyabrd.finvasia.com/Charts/chartw.html",
+    "accept-encoding": "gzip, deflate, br",
+    "accept-language": "en-US,en;q\u003d0.9,mr;q\u003d0.8,hi;q\u003d0.7"}
+    temp={"SecIdxCode":secid,"Exch":1,"ScripIdLst":[],"Seg":seg}
+    data={"Count":1,"Data":str(temp),"DoCompress":false,"RequestCode":129,"Reserved":"SMC0121","Source":"W","UserId":"FA27632"}
+    return pd.DataFrame(s.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed",headers=headers,data=data).json())
+
 def timestamp():
     tmstmp=str(time.time())
     ciqrand=tmstmp[0]+tmstmp[1]+tmstmp[2]+tmstmp[3]+tmstmp[4]+tmstmp[5]+tmstmp[6]+tmstmp[7]+tmstmp[8]+tmstmp[9]+tmstmp[11]+tmstmp[12]+tmstmp[13]
