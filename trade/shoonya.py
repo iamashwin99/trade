@@ -112,25 +112,11 @@ def getdata(secid,fdt=1,tdt=1,seg="E"):
 def get_ltp(secid,seg="1"):
     """ seg=1 for eq 2 for fno
     """
-    headers={
-    "Host": "shoonyabrd.finvasia.com",
-    "content-length": "175",
-    "sec-ch-ua": "\"Google Chrome\";v\u003d\"87\", \" Not;A Brand\";v\u003d\"99\", \"Chromium\";v\u003d\"87\"",
-    "dnt": "1",
-    "sec-ch-ua-mobile": "?1",
-    "save-data": "on",
-    'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0',
-    "content-type": "application/json",
-    "accept": "*/*",
-    "origin": "https://shoonyabrd.finvasia.com",
-    "sec-fetch-site": "same-origin",
-    "sec-fetch-mode": "cors",
-    "sec-fetch-dest": "empty",
-    "referer": "https://shoonyabrd.finvasia.com/Charts/chartw.html",
-    "accept-encoding": "gzip, deflate, br",
-    "accept-language": "en-US,en;q\u003d0.9,mr;q\u003d0.8,hi;q\u003d0.7"}
+    headers={'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'en-US,en;q=0.5', 'Connection': 'keep-alive', 'Content-Length': '175',
+             'Content-Type': 'application/json', 'Host': 'shoonyabrd.finvasia.com', 'Origin': 'https://shoonyabrd.finvasia.com', 'Referer': 'https://shoonyabrd.finvasia.com/Charts/chartw.html', 'TE': 'Trailers',
+             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0'}
     temp={"SecIdxCode":secid,"Exch":1,"ScripIdLst":[],"Seg":seg}
-    data={"Count":1,"Data":str(temp),"DoCompress":False,"RequestCode":129,"Reserved":"SMC0121","Source":"W","UserId":"FA27632"}
+    data={"Count": 1,"Data": temp,"DoCompress": False,"RequestCode": 129,"Reserved": "SMC0121","Source": "W","UserId": "FA27632"}
     return s.post("https://shoonyabrd.finvasia.com/TickPub/api/Tick/LiveFeed",headers=headers,data=data).json()
 
 def timestamp():
